@@ -3,7 +3,7 @@ from prediction import *
 from flask import Flask, jsonify, request, json
 app = Flask(__name__)
 
-@app.route('/predict', methods=['GET', 'POST'])
+@app.route('/', methods=['GET', 'POST'])
 def price():
      data = request.json
      df = pd.DataFrame(data, index=[0])
