@@ -5,8 +5,7 @@ First API deployed on Render
 
 In order to use this with Docker, you need to:
 1. Build the image
-
-# Give your image with the name of you choice, here I used "docker-ml-model"
+Give your image with the name of you choice, here I used "docker-ml-model"
 docker build -t docker-ml-model -f Dockerfile .
 
 2. Run the image
