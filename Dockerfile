@@ -1,5 +1,4 @@
 FROM python:3.7
-EXPOSE 5000
 
 WORKDIR /home/becode/Desktop/becode_projects/Real-Estate-Price-Prediction/Deployment
 
