@@ -1,3 +1,4 @@
+import os
 import numpy as np
 from prediction import *
 from flask import Flask, jsonify, request, json
@@ -13,5 +14,5 @@ def price():
      return jsonify({"Predicted price of the house " : price_pred[1:-1]})
 
 if __name__ == '__main__':
-    app.run(host = '0.0.0.0')
+    app.run(debug=True, host='0.0.0.0', port=os.environ.get("PORT",  5000))
 
