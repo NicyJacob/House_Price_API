@@ -28,7 +28,7 @@ def preprocess(df):
     df['encoded_kitchen'] = encoded_kitchen
     
     #merging for average salary of the zipcode
-    df_avg_sal = pd.read_csv('/home/becode/Desktop/becode_projects/Real-Estate-Price-Prediction/Deployment/House_Price_API/avg_sal_zipcodes.csv')
+    df_avg_sal = pd.read_csv('avg_sal_zipcodes.csv')
     df1 = pd.merge(df, df_avg_sal, on ="zip-code", how ='left')
 
     #renaming columns to suit the model train data
@@ -48,19 +48,19 @@ def predict(df):
     data = preprocess(df)
     
     #Using the scaler from the model
-    filename = '/home/becode/Desktop/becode_projects/Real-Estate-Price-Prediction/Deployment/House_Price_API/finalized_scaler.sav'
+    filename = 'finalized_scaler.sav'
     scaler = joblib.load(filename)
     data_scaled = scaler.transform(data)
     
     #Applying the model
-    filename1 = '/home/becode/Desktop/becode_projects/Real-Estate-Price-Prediction/Deployment/House_Price_API/finalized_model.sav'
+    filename1 = 'finalized_model.sav'
     model = joblib.load(filename1)
     prediction = model.predict(data_scaled)
     return(prediction)
 
 
 #getting the input data
-dict1 = {"data": {
+dict = {"data": {
     "area":100, 
     "property-type": "APARTMENT", 
     "rooms-number": 3, 
@@ -79,13 +79,15 @@ dict1 = {"data": {
     "building-state": "GOOD" #Not used
     }
     }
-with open("data.json", "w") as outfile:
-    json.dump(dict1, outfile)
-with open("data.json") as infile:
-    dict = json.load(infile)
-df = pd.DataFrame.from_dict(dict, orient='index')
+#with open("data.json", "w") as outfile:
+    #json.dump(dict1, outfile)
+#with open("data.json") as infile:
+    #dict = json.load(infile)
+#df = pd.DataFrame.from_dict(dict, orient='index')
 #print(df)
 #predicting the price using the model
-x = predict(df)
+#x = predict(df)
 #print(f" The price is {x.round(2)} euros")
+#from pathlib import Path
+#print(Path.cwd())
 
