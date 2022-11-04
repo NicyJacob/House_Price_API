@@ -13,5 +13,5 @@ def price():
      return jsonify({"Predicted price of the house " : price_pred[1:-1]})
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host = '0.0.0.0')
 
