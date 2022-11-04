@@ -28,7 +28,7 @@ def preprocess(df):
     df['encoded_kitchen'] = encoded_kitchen
     
     #merging for average salary of the zipcode
-    df_avg_sal = pd.read_csv('/home/becode/Desktop/becode_projects/Real-Estate-Price-Prediction/Deployment/avg_sal_zipcodes.csv')
+    df_avg_sal = pd.read_csv('/home/becode/Desktop/becode_projects/Real-Estate-Price-Prediction/Deployment/House_Price_API/avg_sal_zipcodes.csv')
     df1 = pd.merge(df, df_avg_sal, on ="zip-code", how ='left')
 
     #renaming columns to suit the model train data
@@ -48,12 +48,12 @@ def predict(df):
     data = preprocess(df)
     
     #Using the scaler from the model
-    filename = '/home/becode/Desktop/becode_projects/Real-Estate-Price-Prediction/Deployment/finalized_scaler.sav'
+    filename = '/home/becode/Desktop/becode_projects/Real-Estate-Price-Prediction/Deployment/House_Price_API/finalized_scaler.sav'
     scaler = joblib.load(filename)
     data_scaled = scaler.transform(data)
     
     #Applying the model
-    filename1 = '/home/becode/Desktop/becode_projects/Real-Estate-Price-Prediction/Deployment/finalized_model.sav'
+    filename1 = '/home/becode/Desktop/becode_projects/Real-Estate-Price-Prediction/Deployment/House_Price_API/finalized_model.sav'
     model = joblib.load(filename1)
     prediction = model.predict(data_scaled)
     return(prediction)

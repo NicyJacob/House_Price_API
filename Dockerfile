@@ -1,6 +1,6 @@
 FROM python:3.7
 
-WORKDIR /home/becode/Desktop/becode_projects/Real-Estate-Price-Prediction/Deployment
+WORKDIR /home/becode/Desktop/becode_projects/Real-Estate-Price-Prediction/Deployment/House_Price_API
 
 RUN pip3 install joblib
 RUN pip3 install numpy
